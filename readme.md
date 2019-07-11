@@ -76,3 +76,8 @@ The laravel structure, this API uses Passport to communicate with the clients
 
 
 Once the user has succesfully logged in the token should be included in the call as Authorization with value of "Bearer the-token" where **the-token** is the actual token
+
+
+### Unit test
+
+To run the unit tests use php unit, they can be found on /tests/Feature folder
