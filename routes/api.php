@@ -17,3 +17,7 @@ Route::post('register', 'API\UserController@register')->name("register");
 Route::group(['middleware' => 'auth:api'], function(){
     Route::get('user', 'API\UserController@details');
 });
+
+Route::get('wall', 'API\WallController@index')->name("dashboard");
+Route::post('wall', 'API\WallController@store')->name("store_wall");
+Route::delete('wall/{id}', 'API\WallController@destroy')->name("destroy_wall");

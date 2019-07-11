@@ -31,5 +31,48 @@ The laravel structure, this API uses Passport to communicate with the clients
     }
 }
 ````
+### Example for wall list response
+
+````
+{
+    "success": {
+        "current_page": 1,
+        "data": [
+            {
+                "id": 1,
+                "user_id": 3,
+                "wall_content": "1212asadsasd",
+                "created_at": null,
+                "updated_at": null
+            },
+            {
+                "id": 2,
+                "user_id": 5,
+                "wall_content": "asadasdasdas",
+                "created_at": null,
+                "updated_at": null
+            },
+            {
+                "id": 3,
+                "user_id": 1,
+                "wall_content": "12345wallcontent",
+                "created_at": "2019-07-11 03:23:44",
+                "updated_at": "2019-07-11 03:23:44"
+            }
+        ],
+        "first_page_url": "http://127.0.0.1:8000/api/wall?page=1",
+        "from": 1,
+        "last_page": 1,
+        "last_page_url": "http://127.0.0.1:8000/api/wall?page=1",
+        "next_page_url": null,
+        "path": "http://127.0.0.1:8000/api/wall",
+        "per_page": 25,
+        "prev_page_url": null,
+        "to": 3,
+        "total": 3
+    }
+}
+````
+
 
 Once the user has succesfully logged in the token should be included in the call as Authorization with value of "Bearer the-token" where **the-token** is the actual token
