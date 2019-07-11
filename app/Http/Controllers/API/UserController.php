@@ -10,9 +10,11 @@ namespace App\Http\Controllers\API;
 
 
 use App\Http\Controllers\Controller;
+use App\Mail\UserCreated;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
@@ -58,6 +60,9 @@ class UserController extends Controller
         $user = User::create($input);
         $success['token'] = $user->createToken('wall-app-token')->accessToken;
         $success['name'] = $user->name;
+        $obj = new \stdClass();
+        $obj->receiver= $user->name;
+        Mail::to($user->email)->send(new UserCreated($obj));
         return response()->json(['success' => $success], $this->successStatus);
     }
 
