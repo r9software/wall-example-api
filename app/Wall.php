@@ -21,5 +21,14 @@ class Wall extends Model{
      * @var string name of the table
      */
     protected $table ="wall";
+    protected $appends = ['user_name'];
 
+    public function getUserNameAttribute()
+    {
+        return $this->user()->first()->name;
+    }
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }
