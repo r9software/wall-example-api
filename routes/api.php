@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Routing\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,5 +15,5 @@ use Illuminate\Routing\Route;
 Route::post('login', 'API\UserController@login');
 Route::post('register', 'API\UserController@register');
 Route::group(['middleware' => 'auth:api'], function(){
-    Route::post('details', 'API\UserController@details');
+    Route::get('user', 'API\UserController@details');
 });
