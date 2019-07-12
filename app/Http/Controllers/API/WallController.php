@@ -17,7 +17,7 @@ class WallController extends Controller
      */
     public function index()
     {
-        $list=Wall::paginate(25);
+        $list=Wall::orderBy('created_date', 'desc')->paginate(25);
         return response()->json(['success' => $list], $this->successStatus);
     }
 
