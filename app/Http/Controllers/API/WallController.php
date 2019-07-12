@@ -30,13 +30,14 @@ class WallController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'user_id' => 'required',
             'wall_content' => 'required',
         ]);
         if ($validator->fails()) {
             return response()->json(['error' => $validator->errors()], 401);
         }
         $input = $request->all();
+        $user = Auth::user();
+        $input['user_id']=$user['id'];
         $wall = Wall::create($input);
         $success['wall_element'] = $wall;
         return response()->json(['success' => $success], $this->successStatus);
